@@ -64,6 +64,26 @@ openclaw tui
 
 启动一个交互式的终端界面（Terminal User Interface），可以直接在 shell 中用自然语言与 Claude 对话，所有请求通过 CTok.ai API 处理。这是一个命令行交互界面，不是网页。
 
+### Web 管理界面（Dashboard）
+
+```bash
+# 启动 Web Dashboard
+openclaw dashboard
+
+# 或使用脚本
+bash skills/openclaw-setup/scripts/dashboard.sh
+```
+
+OpenClaw 内置了一个 Web 管理界面，类似于 Hapi 管理 Claude Code CLI。功能包括：
+- 📊 查看 Gateway 状态和健康信息
+- 💬 管理会话和对话历史
+- 🌐 监控浏览器 profiles 状态
+- 📝 实时查看日志
+- ⚙️ 控制 Agent 设置
+- 🔧 管理技能（Skills）
+
+Dashboard 会在浏览器中打开，URL 格式：`http://127.0.0.1:18789/#token=<your-token>`
+
 ### 浏览器自动化
 
 ```bash
@@ -137,6 +157,12 @@ source ~/.zshrc
 # 检查状态
 openclaw health
 
+# 启动 TUI（终端交互）
+openclaw tui
+
+# 启动 Web Dashboard（浏览器管理界面）
+openclaw dashboard
+
 # 查看浏览器状态
 openclaw browser --browser-profile openclaw status
 openclaw browser --browser-profile bg status
@@ -144,6 +170,9 @@ openclaw browser --browser-profile bg status
 # 查看打开的标签页
 openclaw browser --browser-profile openclaw tabs
 openclaw browser --browser-profile bg tabs
+
+# 查看日志
+openclaw logs --follow
 
 # 停止所有服务
 bash skills/openclaw-setup/scripts/stop.sh
@@ -165,7 +194,8 @@ clawbot/
 │       └── scripts/
 │           ├── install.sh      # 一键安装脚本
 │           ├── start.sh        # 启动脚本
-│           └── stop.sh         # 停止脚本
+│           ├── stop.sh         # 停止脚本
+│           └── dashboard.sh    # Web 管理界面启动脚本
 ```
 
 ## 依赖要求

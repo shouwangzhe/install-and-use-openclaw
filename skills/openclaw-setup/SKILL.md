@@ -107,6 +107,28 @@ This launches an interactive command-line interface where you can:
 
 Note: This is a terminal-based interface running in your shell, not a web page.
 
+## Web Management Dashboard
+
+OpenClaw includes a built-in web dashboard, similar to Hapi for Claude Code CLI:
+
+```bash
+# Launch dashboard
+openclaw dashboard
+
+# Or use the script
+bash skills/openclaw-setup/scripts/dashboard.sh
+```
+
+**Dashboard Features:**
+- 📊 Gateway status and health monitoring
+- 💬 Session and conversation management
+- 🌐 Browser profile monitoring
+- 📝 Real-time log viewing
+- ⚙️ Agent settings control
+- 🔧 Skills management
+
+The dashboard opens automatically in your browser at: `http://127.0.0.1:18789/#token=<your-token>`
+
 ## Key Commands
 
 ```bash

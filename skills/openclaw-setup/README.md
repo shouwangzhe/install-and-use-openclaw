@@ -105,6 +105,28 @@ openclaw tui
 
 这是一个在 shell 中运行的交互式命令行界面，可以直接输入自然语言与 Claude 对话，不是网页界面。
 
+## Web 管理界面（Dashboard）
+
+OpenClaw 内置了 Web 管理界面，类似于 Hapi 管理 Claude Code CLI：
+
+```bash
+# 方式 1：直接启动
+openclaw dashboard
+
+# 方式 2：使用脚本
+bash skills/openclaw-setup/scripts/dashboard.sh
+```
+
+**Dashboard 功能：**
+- 📊 Gateway 状态监控
+- 💬 会话和对话管理
+- 🌐 浏览器 profiles 监控
+- 📝 实时日志查看
+- ⚙️ Agent 设置控制
+- 🔧 Skills 管理
+
+Dashboard 会自动在浏览器中打开，访问地址：`http://127.0.0.1:18789/#token=<your-token>`
+
 ## install.sh 做了什么
 
 1. 检查 Node.js 环境

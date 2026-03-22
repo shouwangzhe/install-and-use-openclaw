@@ -1,0 +1,25 @@
+# OpenClaw sensitive files
+.openclaw/
+*.log
+
+# Environment variables (contains API keys)
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# Node modules (if any)
+node_modules/
+
+# Claude Code
+.claude/

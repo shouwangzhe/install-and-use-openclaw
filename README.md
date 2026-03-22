@@ -62,7 +62,7 @@ openclaw browser --browser-profile bg open https://example.com
 openclaw tui
 ```
 
-启动后可以直接用自然语言与 Claude 对话，所有请求通过 CTok.ai API 处理。
+启动一个交互式的终端界面（Terminal User Interface），可以直接在 shell 中用自然语言与 Claude 对话，所有请求通过 CTok.ai API 处理。这是一个命令行交互界面，不是网页。
 
 ### 浏览器自动化
 

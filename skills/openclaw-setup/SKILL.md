@@ -92,17 +92,20 @@ openclaw browser --browser-profile bg screenshot
 
 ## Natural Language Interaction (TUI)
 
-Once the stack is running, use the interactive terminal UI:
+Once the stack is running, use the interactive Terminal User Interface (shell-based):
 
 ```bash
 openclaw tui
 ```
 
-This opens a natural language interface where you can:
+This launches an interactive command-line interface where you can:
+- Chat with Claude using natural language directly in your terminal
 - Describe tasks in plain English
 - Control both browser profiles
 - Execute complex workflows
 - See real-time browser snapshots
+
+Note: This is a terminal-based interface running in your shell, not a web page.
 
 ## Key Commands
 

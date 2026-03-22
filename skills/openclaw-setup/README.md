@@ -97,11 +97,13 @@ openclaw browser --browser-profile bg open https://example.com
 
 ## 自然语言交互（TUI）
 
-栈启动后，使用终端 UI 进行自然语言交互：
+栈启动后，使用交互式终端界面（Terminal User Interface）进行自然语言交互：
 
 ```bash
 openclaw tui
 ```
+
+这是一个在 shell 中运行的交互式命令行界面，可以直接输入自然语言与 Claude 对话，不是网页界面。
 
 ## install.sh 做了什么
 

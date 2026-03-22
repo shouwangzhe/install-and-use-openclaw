@@ -7,11 +7,18 @@ log() { echo "[openclaw-dashboard] $*"; }
 ok()  { echo "[openclaw-dashboard] ✓ $*"; }
 warn() { echo "[openclaw-dashboard] ⚠ $*"; }
 
-# 检查 Gateway 是否运行
+# 检查 Gateway 是否运行，如果没有则自动启动
 if ! openclaw health >/dev/null 2>&1; then
-  warn "Gateway is not running. Start it first:"
-  warn "  bash skills/openclaw-setup/scripts/start.sh"
-  exit 1
+  log "Gateway is not running, starting it now..."
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY:-}" \
+  openclaw gateway --allow-unconfigured --force \
+    >> "${HOME}/.openclaw/logs/gateway.log" 2>&1 &
+  sleep 4
+  if ! openclaw health >/dev/null 2>&1; then
+    warn "Failed to start Gateway. Check: tail -20 ~/.openclaw/logs/gateway.log"
+    exit 1
+  fi
 fi
 
 ok "Gateway is running"

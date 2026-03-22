@@ -182,6 +182,53 @@ pkill -f "openclaw gateway"
 bash skills/openclaw-setup/scripts/start.sh
 ```
 
+## 多节点管理（Tailscale）
+
+通过 Tailscale 将多台机器的 OpenClaw 统一在 A 机器的 Dashboard 管理：
+
+### 架构
+
+```
+A 机器（主节点）
+  ├── Gateway: ws://100.x.x.x:18789  ← Tailscale IP
+  └── Dashboard: http://100.x.x.x:18789/#token=...
+
+B/C 机器（工作节点）
+  └── openclaw node run --host 100.x.x.x --port 18789
+```
+
+### 配置步骤
+
+**A 机器（主节点）：**
+
+```bash
+# 1. 安装并登录 Tailscale
+brew install tailscale
+brew services start tailscale
+tailscale up  # 按提示登录
+
+# 2. 获取 Tailscale IP
+tailscale ip -4  # 例如 100.120.135.35
+
+# 3. 以 Tailscale 模式启动 Gateway
+bash skills/openclaw-setup/scripts/start-master.sh
+```
+
+**B/C 机器（工作节点）：**
+
+```bash
+# 1. 安装 Tailscale 并登录同一账户
+# 2. 安装 OpenClaw
+bash skills/openclaw-setup/scripts/install.sh
+
+# 3. 连接到 A 机器的 Gateway
+bash skills/openclaw-setup/scripts/start-node.sh <A机器的Tailscale-IP>
+# 例如：
+bash skills/openclaw-setup/scripts/start-node.sh 100.120.135.35
+```
+
+连接成功后，在 A 机器的 Dashboard 即可看到并管理所有节点。
+
 ## 项目结构
 
 ```
@@ -193,7 +240,9 @@ clawbot/
 │       ├── README.md           # 详细文档
 │       └── scripts/
 │           ├── install.sh      # 一键安装脚本
-│           ├── start.sh        # 启动脚本
+│           ├── start.sh        # 启动脚本（单机）
+│           ├── start-master.sh # 主节点启动（Tailscale）
+│           ├── start-node.sh   # 工作节点启动（连接主节点）
 │           ├── stop.sh         # 停止脚本
 │           └── dashboard.sh    # Web 管理界面启动脚本
 ```

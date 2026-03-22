@@ -73,7 +73,10 @@ if [ ! -f "$CONFIG_FILE" ]; then
   },
   "gateway": {
     "mode": "local",
-    "bind": "loopback"
+    "bind": "loopback",
+    "controlUi": {
+      "dangerouslyAllowHostHeaderOriginFallback": true
+    }
   },
   "models": {
     "providers": {
